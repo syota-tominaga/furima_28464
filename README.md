@@ -1,24 +1,65 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| name     | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :purchasers
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| name            | string | null: false |
+| image           |        | null: false |
+| text            |        |             |
+| category        |
+| condition       |
+| shipping_origin |
+| delivery_fee    |
+| delivery_fee    |
+| price           |
+| user_id         |
+### Association
 
-* Database initialization
+- belongs_to :users
+- has_many   :purchasers
+- has_many   :sales
 
-* How to run the test suite
+## purchasers テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column      | Type   | Options     |
+| ----------- | ------ | ----------- |
+| postal_code | string | null: false |
+| prefectures |        | null: false |
+| city        |        |             |
+| address     |
+| building    |
+| phone       |
+| item_id     |
+| user_id     |
+### Association
 
-* Deployment instructions
+- belongs_to :users
+- belongs_to :item
+- has_many   :sales
 
-* ...
+## sales テーブル
+
+| Column        | Type   | Options     |
+| ------------- | ------ | ----------- |
+| sold          | string | null: false |
+| sell          | string | null: false |
+| item_id       | string | null: false |
+| purchasers_id |
+### Association
+
+- belongs_to :items
+- belongs_to :purchasers
