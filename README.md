@@ -51,8 +51,9 @@
 | city         | string     | null: false                    |
 | address      | string     | null: false                    |
 | building     | string     |                                |
-| phone        | integer    | null: false                    |
+| phone        | string     | null: false                    |
 | user_id      | references | null: false, foreign_key: true |
+| purchases_id | references | null: false, foreign_key: true |
 ### Association
 
 - belongs_to             :users
@@ -64,8 +65,8 @@
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | item_id | references | null: false, foreign_key: true |
-| destination_id | references | null: false, foreign_key: true |
+| user_id | references | null: false, foreign_key: true |
 ### Association
 
 - belongs_to :items
-- has_one    :destinations
+- belongs_to :users
