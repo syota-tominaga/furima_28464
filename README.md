@@ -12,17 +12,11 @@
 | first_name      | string  | null: false |
 | family_name_kana| string  | null: false |
 | first_name_kana | string  | null: false |
-| birth_year_id   | date    | null: false |
-| birth_month_id  | date    | null: false |
-| birth_day_id    | date    | null: false |
+| birth_day       | date    | null: false |
 ### Association
 
-- has_many               :items
-- has_many               :purchasers
-- has_many               :destinations
-- belongs_to_active_hash :birth_year
-- belongs_to_active_hash :birth_month
-- belongs_to_active_hash ::birth_day
+- has_many :items
+- has_many :destinations
 
 ## items テーブル
 
@@ -30,11 +24,11 @@
 | ------------------ | ---------- | ----------- |
 | name               | string     | null: false |
 | text               | text       | null: false |
-| category_id        | string     | null: false |
-| condition_id       | string     | null: false |
-| shipping_origin_id | string     | null: false |
+| category_id        | integer    | null: false |
+| condition_id       | integer    | null: false |
+| shipping_origin_id | integer    | null: false |
 | delivery_fee_id    | integer    | null: false |
-| delivery_day_id    | datetime   | null: false | 
+| delivery_day_id    | integer    | null: false | 
 | price              | integer    | null: false |
 | user_id        | references | null: false foreign_key:true |
 ### Association
@@ -53,7 +47,7 @@
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | postal_code  | string     | null: false                    |
-| prefecture_id| string     | null: false                    |
+| prefecture_id| integer    | null: false                    |
 | city         | string     | null: false                    |
 | address      | string     | null: false                    |
 | building     | string     |                                |
@@ -63,14 +57,15 @@
 
 - belongs_to             :users
 - belongs_to_active_hash :prefecture
+- has_many               :purchasers
 
 ## purchasers テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | item_id | references | null: false, foreign_key: true |
-| user_id | references | null: false, foreign_key: true |
+| destination_id | references | null: false, foreign_key: true |
 ### Association
 
 - belongs_to :items
-- belongs_to :users
+- belongs_to :destinations
