@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :destinations
+- has_many :purchasers
 
 ## items テーブル
 
@@ -30,10 +30,10 @@
 | delivery_fee_id    | integer    | null: false |
 | delivery_day_id    | integer    | null: false | 
 | price              | integer    | null: false |
-| purchaser | references | null: false, foreign_key: true |
+| user_id      | references | null: false, foreign_key: true |
 
 ### Association
-
+- belongs_to             :users
 - has_one                :purchasers
 - has_one_attached       :image
 - belongs_to_active_hash :category
@@ -52,7 +52,6 @@
 | address      | string     | null: false                    |
 | building     | string     |                                |
 | phone        | string     | null: false                    |
-| user_id      | references | null: false, foreign_key: true |
 | purchases_id | references | null: false, foreign_key: true |
 ### Association
 
@@ -70,3 +69,4 @@
 
 - belongs_to :items
 - belongs_to :users
+- has_one    :destinations
