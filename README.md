@@ -30,11 +30,11 @@
 | delivery_fee_id    | integer    | null: false |
 | delivery_day_id    | integer    | null: false | 
 | price              | integer    | null: false |
-| user_id        | references | null: false foreign_key:true |
+| purchaser | references | null: false, foreign_key: true |
+
 ### Association
 
-- belongs_to             :users
-- has_many               :purchasers
+- has_one                :purchasers
 - has_one_attached       :image
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
@@ -57,7 +57,7 @@
 
 - belongs_to             :users
 - belongs_to_active_hash :prefecture
-- has_many               :purchasers
+- belongs_to             :purchasers
 
 ## purchasers テーブル
 
@@ -68,4 +68,4 @@
 ### Association
 
 - belongs_to :items
-- belongs_to :destinations
+- has_one    :destinations
