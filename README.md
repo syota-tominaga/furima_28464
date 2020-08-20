@@ -30,11 +30,11 @@
 | delivery_fee_id    | integer    | null: false |
 | delivery_day_id    | integer    | null: false | 
 | price              | integer    | null: false |
-| user_id      | references | null: false, foreign_key: true |
+| user      | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to             :users
-- has_one                :purchasers
+- belongs_to             :user
+- has_one                :purchaser
 - has_one_attached       :image
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
@@ -52,21 +52,21 @@
 | address      | string     | null: false                    |
 | building     | string     |                                |
 | phone        | string     | null: false                    |
-| purchases_id | references | null: false, foreign_key: true |
+| purchases    | references | null: false, foreign_key: true |
 ### Association
 
-- belongs_to             :users
+- belongs_to              :user
 - belongs_to_active_hash :prefecture
-- belongs_to             :purchasers
+- belongs_to             :purchaser
 
 ## purchasers テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| item_id | references | null: false, foreign_key: true |
-| user_id | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
 ### Association
 
-- belongs_to :items
-- belongs_to :users
-- has_one    :destinations
+- belong_to  :item
+- belongs_to :user
+- has_one    :destination
