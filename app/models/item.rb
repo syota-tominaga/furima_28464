@@ -1,11 +1,10 @@
 class Item < ApplicationRecord
-
-  belings_to :user
-  belongs_to_active_hash :category
-  belongs_to_active_hash :condition
-  belongs_to_active_hash :shipping_origin
-  belongs_to_active_hash :delivery_fee
-  belongs_to_active_hash :delivery_day
+  belongs_to :user
+  belongs_to_active_hash :category_id
+  belongs_to_active_hash :condition_id
+  belongs_to_active_hash :shipping_origin_id
+  belongs_to_active_hash :delivery_fee_id
+  belongs_to_active_hash :delivery_day_id
 
   with_options presence: true do
     validates :name
@@ -16,4 +15,6 @@ class Item < ApplicationRecord
     validates :shipping_origin_id
     validates :delivery_fee_id
     validates :delivery_day_id
+    validates :price
+  end
 end
