@@ -1,15 +1,18 @@
 class Item < ApplicationRecord
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+
   belongs_to :user
-  belongs_to_active_hash :category_id
-  belongs_to_active_hash :condition_id
-  belongs_to_active_hash :shipping_origin_id
-  belongs_to_active_hash :delivery_fee_id
-  belongs_to_active_hash :delivery_day_id
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :shipping_origin
+  belongs_to_active_hash :delivery_fee
+  belongs_to_active_hash :delivery_day
+  has_one_attached :image
 
   with_options presence: true do
     validates :name
     validates :text
-    validates :image
     validates :category_id
     validates :condition_id
     validates :shipping_origin_id
