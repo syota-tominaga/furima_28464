@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:edit, :show, :update]
+  before_action :set_item, only: [:edit, :show, :update, :destroy]
   def index
     @items = Item.includes(:user).order("id DESC")
   end
@@ -16,6 +16,11 @@ class ItemsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   def show
