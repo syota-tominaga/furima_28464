@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_one  :destination
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   FULL_WIDTH_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze

@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_fee
   belongs_to_active_hash :delivery_day
   has_one_attached :image
+  has_one :destination
 
   with_options presence: true do
     validates :name
