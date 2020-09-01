@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
-  has_one  :destination
+  has_many :purchases
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   FULL_WIDTH_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
@@ -22,4 +22,5 @@ class User < ApplicationRecord
     validates :first_name_kana, format: { with: KATAKANA_REGEX, message: 'is invalid. Input full-width katakana characters.' }
     validates :birth_day
   end
+  
 end
