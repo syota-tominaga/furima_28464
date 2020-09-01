@@ -11,6 +11,7 @@ class ItemPurchase
     validates :city
     validates :address
     validates :phone, format: { with: PHONE_REGEX }
+    validates :token
   end
   def save
     Destination.create!(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone: phone, item_id: item_id)

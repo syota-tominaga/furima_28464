@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchasers
+- has_many :purchases
 
 ## items テーブル
 
@@ -34,7 +34,7 @@
 
 ### Association
 - belongs_to             :user
-- has_one                :purchaser
+- has_one                :purchase
 - has_one_attached       :image
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
@@ -55,11 +55,10 @@
 | purchases    | references | null: false, foreign_key: true |
 ### Association
 
-- belongs_to              :user
+- belongs_to             :item
 - belongs_to_active_hash :prefecture
-- belongs_to             :purchaser
 
-## purchasers テーブル
+## purchase テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -69,4 +68,3 @@
 
 - belong_to  :item
 - belongs_to :user
-- has_one    :destination
