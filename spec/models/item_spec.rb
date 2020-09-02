@@ -39,9 +39,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
       end
       it '配達元が入力されて居ない' do
-        @item.shipping_origin_id = ''
+        @item.prefecture_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping origin can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it '配達日数が入力されて居ない' do
         @item.delivery_day_id = ''
